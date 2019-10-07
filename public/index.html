@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sunrise Records - Egg Hunt</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=1400">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900|Raleway|Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+
+    <!-- update the version number as needed -->
+    <script src="app.js"></script>
+    <script defer src="/__/firebase/5.7.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <!--<script defer src="/__/firebase/5.7.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/5.7.2/firebase-database.js"></script>
+    <script defer src="/__/firebase/5.7.2/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/5.7.2/firebase-storage.js"></script> -->
+    <script defer src="/__/firebase/5.7.2/firebase-firestore.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="jquery.ui.touch-punch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=Promise"></script><!--Pollyfil for ES6 Promises for IE-->
+  </head>
+  <body>
+
+    <div class="site-cont">
+
+      <div id="enteredemails">
+
+      </div>
+
+      <div id="logoDiv" class="logo-cont">
+        <img src="img/slogo.png" class="logo1"/>        
+        <img src="img/logo2.png" class="logo2"/>    
+      </div>
+
+
+      <div class="form-div" id="formDiv">
+        <p class="rules-p1">
+          Enter your email address to register your play.
+        </p>
+        <!--<p class="rules-p2">
+          This game appears best on a desktop computer using an up-to-date (and hopefully non-Microsoft) or 
+        </p>-->
+
+        <form id ="emailForm">
+          <div class="form-row">
+            <input type="text" placeholder="name@domain.com" id="newEmailAddress">
+          </div>
+          <div class="form-row">
+            <div class="optin-col1"><input class="checkbox" type="checkbox" name="optinBox" id="optinBox" value="signup"></div>
+            <div class="optin-col2"><p class="optin-p">Subscribe me to receive Sunrise Records emails for new releases, contests, and more. You can unsubscribe at any time.</p></div>
+          </div>
+          <div class="form-row">  
+            <input type="submit" value="PLAY NOW" id="submitEmail">
+          </div>
+        </form>
+      </div>
+      
+      <div class="hidden" id="instPopup">
+        <div class="inst-popup-inner">
+          <p class="inst-popup-p1">You have exactly <span>2 minutes</span> to locate all of the <span>easter eggs</span> and drag them to your <span>basket</span>.</p> 
+          <img src="img/howto.jpg" class="howto-img">
+          <button id="popup2-btn"><p>BEGIN THE HUNT</p></button>
+        </div>
+      </div>
+      
+      <div class="hidden" id="mainCont">
+        <div class="maingame">
+
+          <div class="centered-cont">
+            <img src="img/slogo2.png" class="logo1-2"/>  
+            <div class="instructions-cont"><h2 class="instructions-h2">Collect all 25 eggs in 2 minutes!</h2></div>      
+            <div class="timerdiv" id="timerDiv">TIME: 00:00</div>    
+            <div class="scorediv" id="scoreDiv">EGGS: 0/25</div>
+          </div>
+
+          <div class="mainscene">
+            <div class="scene-cont1">
+              <img class="building-1" src="img/building.png">
+              <img class="lady1-img" src="img/lady-gif1.gif"/>
+              <img class="foodtruck-img" src="img/foodtruck.png"/>
+              <img class="drummer-img" src="img/drummer-gif2.gif"/>
+              <img class="guitarist-img" src="img/guitarist-gif2.gif"/>
+              <img class="sax-img" src="img/sax-gif1.gif"/>
+              <img class="singer1-img" src="img/singer-gif1.gif"/>
+              <img class="piano-img" src="img/piano-gif1.gif"/>
+              <img class="speaker-img1" src="img/speaker1.png">
+              <img class="generator-img" src="img/generator.png">
+              <img class="stage-img" id="theStage" src="img/stage1.png">
+              <img class="speaker-img2" src="img/speaker2.png">
+              <img class="bouncycastle-img" src="img/bouncycastle.png">
+              <img class="picnic1-img" src="img/picnic-gif1.gif">
+              <img class="picnic2-img" src="img/picnic-gif2.gif">
+              <img class="bunny-img" src="img/bunny-gif1.gif">
+              <img class="sign-img" src="img/sign2.png">
+              <img class="pole1-img" src="img/pole.png">
+              <img class="pole2-img" src="img/pole.png">
+              <img class="tent1-img" src="img/tent1.png">
+              <img class="funko-img" src="img/funkobig.png">
+              <img class="tf-img" src="img/tf-gif.gif">
+              <img class="group1-img" src="img/group-gif.gif">
+              <img class="bin1-img" src="img/garbage.png">
+              <img class="bin2-img" src="img/garbage.png">
+              <img class="bin3-img" src="img/garbage.png">
+              <img class="records-img" src="img/recordscrate2.png">
+              <img class="kid-img" src="img/kid-gif.gif">
+              <img class="jack-img" src="img/jack-gif.gif">   
+              <img class="wheelchair-img" src="img/wheelchair-gif.gif">
+              <img class="olivia-img" src="img/olivia-gif.gif">                
+            </div>
+
+            <div id="egg1" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg2" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg3" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg4" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg5" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg6" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg7" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg8" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg9" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+<!--             <div id="egg10" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+ -->            <div id="egg11" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+<!--             <div id="egg12" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+ -->            <div id="egg13" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg14" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg15" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg16" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg17" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg18" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+<!--             <div id="egg19" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+ -->            <div id="egg20" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg21" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg22" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg23" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg24" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+<!--             <div id="egg25" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+ -->            <div id="egg26" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg27" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+            <div id="egg28" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+<!--             <div id="egg29" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>
+ -->            <div id="egg30" class="egg-div hidden"><img src="./img/egg1.png" class="eggimg"></div>                      
+
+            <div class="basket-div">
+              <div id="basketDiv" class="basket-div-inner">
+              </div>
+            </div>
+            <div class="basket-div-2">
+            </div>
+          </div>
+        </div><!--mainscene-->
+      </div>
+
+      <div class="hidden" id="noPlay">
+        <h2 class="noplay-h2-1">Nice Try Buddy.</h2>
+        <h2 class="noplay-h2-2">You've already had your go.</h2>
+      </div>
+      
+      <div id="prizePopup" class="popup-main">
+      </div>
+    
+      <div class="footer-bar">
+        <a href="https://www.sunriserecords.com/privacy-policy/"><p class="footer-p">PRIVACY POLICY</p></a>
+      </div>
+    </div>
+  </body>
+</html>
