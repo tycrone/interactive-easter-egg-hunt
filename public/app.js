@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(event){
-
-//document.addEventListener("DOMContentLoaded", event => {      <----NON IE COMPATIBLE ARROW FUNCTION
 	
 	const app = firebase.app();
 	const db = firebase.firestore();
@@ -43,9 +41,9 @@ document.addEventListener("DOMContentLoaded", function(event){
 
 	let ele = document.getElementById('emailForm')
 	if(ele.addEventListener){
-	    ele.addEventListener("submit", checkEmail, false);  //Modern browsers
+	    ele.addEventListener("submit", checkEmail, false);
 	}else if(ele.attachEvent){
-	    ele.attachEvent('onsubmit', checkEmail);            //Old IE
+	    ele.attachEvent('onsubmit', checkEmail);      
 	};
 
 	function checkEmail(e){
@@ -261,11 +259,10 @@ document.addEventListener("DOMContentLoaded", function(event){
 						zeEmails.update({
 							emails: firebase.firestore.FieldValue.arrayUnion(inputEmailLow)
 						});
-						//zeEmails.update({ emails: email.target.value }) <----THIS WILL UPDATE A STRING
-					}//playGame
-				}//else
-			})//.then promise	
-	}//checkEmail
+					}
+				}
+			})	
+	}
 })
 
 
