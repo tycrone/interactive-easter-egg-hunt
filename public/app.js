@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event){
 	
 	const app = firebase.app();
 	const db = firebase.firestore();
-	const settings = {/* your settings... */ timestampsInSnapshots: true};
+	const settings = {timestampsInSnapshots: true};
 	db.settings(settings);
 	const zeEmails = db.collection('emailaddresses').doc('usedemails');
 
